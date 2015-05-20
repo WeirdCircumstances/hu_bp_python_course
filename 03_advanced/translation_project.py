@@ -15,6 +15,35 @@ class BioMolecule(object):
         self.name = name
         self.mass = mass
 
+    @property 
+    def mass(self):
+        return self.__mass
+
+    @mass.setter 
+    def mass(self, value):
+        if not isinstance(value, float):
+            raise TypeError("Mass must be Float.")
+        self.__mass = value
+
+    @property 
+    def name(self):
+        return self.__name
+
+    @name.setter
+    def name(self, word):
+        if not isinstance(word, str):
+            raise TypeError("Name must be String.")
+        self.__name = word
+
+    @property 
+    def _id(self):
+        return self.__id
+
+    @_id.setter
+    def _id(self, number):
+        if not isinstance(number, int):
+            raise TypeError("ID must be Integer.")
+        self.__id = number
     # 1. Write setter and getter methods for all attributes.
     #    Use @property decorators as dicussed in the lecture
     # 2. In the setter methods check for the type of each attribute.
@@ -29,12 +58,24 @@ class Polymer(BioMolecule):
     @type sequence: str
     @type mass: float
     """
-    def __init__(self, id, name, sequence, mass=None):
+    def __init__(self, _id, name, sequence, mass=0.0):
         # 3. Initialize the parent class correctly
+        # None durch 0.0 ersetzt, weil None ist kein Float
         self._sequence = sequence
-
+        super(Polymer, self).__init__(_id, name, mass)
     
     # 4. Write getter and setter for sequence, again check for type
+    @property
+    def sequence(self):
+        return self.__sequence
+
+    @sequence.setter
+    def sequence(self, seq):
+        if not isinstance(seq, str):
+            raise TypeError("Sequence must be String.")
+        self.__sequence = seq
+
+
     # 5. run in ipython, instantiate this class, and test it
     def __getitem__(self, value):
         """
@@ -51,13 +92,18 @@ class Polymer(BioMolecule):
 
 
 class MRNA(Polymer):
-    def __init__(self, id, name, sequence, mass=None):
+    def __init__(self, _id, name, sequence, mass=0.0):
+        super(MRNA, self).__init__(_id, name, sequence, mass)
         # 6. Initialize the parent class correctly
 
         # 7. Create a list that stores if a ribosome is bound for each
         # codon (triplet).
-        self.binding = [] # use this attribute for 7.
+        #self.binding = xrange[0:len(sequence)/3] # use this attribute for 7. 0 nicht gebunden
+        #for codon in self.binding:
+            
 
+
+        UUUUAUUUUUGA
     def calculate_mass(self):
         NA_mass = {'A': 1.0, 'U': 2.2, 'G':2.1, 'C':1.3}
         # 8. calculate the mass for the whole sequence
