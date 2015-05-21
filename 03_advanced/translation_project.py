@@ -98,8 +98,10 @@ class MRNA(Polymer):
 
         # 7. Create a list that stores if a ribosome is bound for each
         # codon (triplet).
-        #self.binding = xrange[0:len(sequence)/3] # use this attribute for 7. 0 nicht gebunden
-        #for codon in self.binding:
+        self.binding = xrange[len(sequence)/3] # use this attribute for 7. 0 nicht gebunden
+        for codon in self.binding:
+            codon = True
+        else codon = False 
             
 
 
