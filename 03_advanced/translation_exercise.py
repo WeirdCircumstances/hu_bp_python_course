@@ -175,4 +175,4 @@ class Cell(object):
             
 if __name__ == "__main__":
     c = Cell()
-    c.simulate(10)
+    c.simulate(100)
