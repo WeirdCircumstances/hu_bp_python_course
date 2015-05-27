@@ -91,13 +91,13 @@ class MRNA(Polymer):
     def __init__(self, mid, name, sequence, mass=0):
         super(MRNA, self).__init__(mid, name, sequence, mass)
         self.binding = [0]*(len(sequence)/3)
-
+'''
     def calculate_mass(self):
         self.mass = 0
         NA_mass = {'A': 1.0, 'U': 2.2, 'G':2.1, 'C':1.3}
         for na in self.sequence:
             self.mass += NA_mass[na]
-
+'''
 
 class Protein(Polymer):
     """
